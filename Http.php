@@ -49,7 +49,6 @@ class Http
                         curl_setopt($ci, CURLOPT_POSTFIELDS, http_build_query($params));
                     }
                 }
-                # 用body传输一个string
                 if(is_string($multi))
                 {
                     curl_setopt($ci, CURLOPT_POSTFIELDS, $multi);
