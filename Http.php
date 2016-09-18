@@ -52,7 +52,6 @@ class Http
                     curl_setopt($ci, CURLOPT_POSTFIELDS, $multi);
                 }
                 break;
-            case 'DELETE':
             case 'GET':
                 if(!empty($params))
                 {
