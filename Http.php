@@ -33,9 +33,7 @@ class Http
                 curl_setopt($ci, CURLOPT_POST, TRUE);
                 if (!empty($params))
                 {
-                    if(isset($headers[0])&&($headers[0]=='Content-type: text/xml' || $headers[0]=='Content-Type:application/json;charset=utf-8')){
-                        curl_setopt($ci, CURLOPT_POSTFIELDS, $params);
-                    }elseif($multi and is_array($multi))
+                    if($multi and is_array($multi))
                     {
                         foreach($multi as $key => $file)
                         {
@@ -56,10 +54,7 @@ class Http
                 break;
             case 'DELETE':
             case 'GET':
-                $method == 'DELETE' && curl_setopt($ci, CURLOPT_CUSTOMREQUEST, 'DELETE');
-                if(isset($headers[0])&&($headers[0]=='Content-type: text/xml' || $headers[0]=='Content-Type:application/json;charset=utf-8')){
-                    curl_setopt($ci, CURLOPT_POSTFIELDS, $params);
-                }elseif(!empty($params))
+                if(!empty($params))
                 {
                     $url = $url . (strpos($url, '?') ? '&' : '?')
                         . (is_array($params) ? http_build_query($params) : $params);
